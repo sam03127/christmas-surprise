@@ -47,7 +47,7 @@ app.get('/surprise-service/photos/:id', wrap(async (req, res) => {
 }));
 
 app.use(express.static(dist));
-app.get('*', (_req, res) => res.sendFile(path.join(dist, 'index.html')));
+app.use((_req, res) => res.sendFile(path.join(dist, 'index.html')));
 
 if (!process.env.MONGO_URL) {
   console.warn('MONGO_URL is not set - surprise persistence is unavailable.');
