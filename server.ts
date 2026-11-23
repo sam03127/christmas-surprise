@@ -46,9 +46,18 @@ app.get('/surprise-service/photos/:id', wrap(async (req, res) => {
   res.end(photo.data);
 }));
 
-app.use(express.static(dist));
+app.use(
+  '/assets',
+  express.static(path.join(dist, 'assets'), {
+    immutable: true,
+    maxAge: '1y',
+  })
+);
 app.use('/assets', (_req, res) => res.status(404).send('Asset not found'));
-app.use((_req, res) => res.sendFile(path.join(dist, 'index.html')));
+app.use((_req, res) => {
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.sendFile(path.join(dist, 'index.html'));
+});
 
 if (!process.env.MONGO_URL) {
   console.warn('MONGO_URL is not set - surprise persistence is unavailable.');
