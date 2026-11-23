@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: christmas-surprise
+    runtime: node
+    plan: free
+    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm run build
+    startCommand: pnpm run start
+    healthCheckPath: /health
+    envVars:
+      - key: MONGO_URL
+        sync: false
