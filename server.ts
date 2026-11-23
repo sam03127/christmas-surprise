@@ -47,6 +47,7 @@ app.get('/surprise-service/photos/:id', wrap(async (req, res) => {
 }));
 
 app.use(express.static(dist));
+app.use('/assets', (_req, res) => res.status(404).send('Asset not found'));
 app.use((_req, res) => res.sendFile(path.join(dist, 'index.html')));
 
 if (!process.env.MONGO_URL) {
