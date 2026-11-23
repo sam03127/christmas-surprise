@@ -1,0 +1,204 @@
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 48px;
+  padding: 0.85rem 1.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--gfx-gold);
+  background: linear-gradient(135deg, var(--gfx-glow), var(--gfx-gold) 55%, #b98c4f);
+  color: var(--gfx-burgundy);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 0 0 0 rgba(217, 174, 112, 0.5), 0 12px 32px -10px rgba(217, 174, 112, 0.55);
+  transition: transform 0.4s var(--gfx-ease), box-shadow 0.4s var(--gfx-ease), opacity 0.2s;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.55) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.9s var(--gfx-ease);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 6px rgba(217, 174, 112, 0.12), 0 18px 40px -10px rgba(217, 174, 112, 0.7);
+}
+
+.btn:hover::after {
+  transform: translateX(120%);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.ghost {
+  background: rgba(255, 241, 223, 0.04);
+  color: var(--gfx-cream);
+  border-color: rgba(217, 174, 112, 0.45);
+  box-shadow: none;
+}
+
+.ghost:hover {
+  background: rgba(217, 174, 112, 0.12);
+  box-shadow: none;
+}
+
+.small {
+  min-height: 44px;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+}
+
+.eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gfx-gold);
+  font-weight: 500;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--gfx-cream);
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  font-size: 0.85rem;
+}
+
+.logoMark {
+  width: 30px;
+  height: 30px;
+}
+
+.logoFx {
+  color: var(--gfx-gold);
+}
+
+.audioCtl {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem;
+  border-radius: 999px;
+  background: rgba(38, 8, 18, 0.72);
+  border: 1px solid rgba(217, 174, 112, 0.35);
+  backdrop-filter: blur(10px);
+}
+
+.audioBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: var(--gfx-gold);
+  color: var(--gfx-burgundy);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.audioMuted {
+  background: transparent;
+  color: var(--gfx-gold);
+  box-shadow: inset 0 0 0 1px rgba(217, 174, 112, 0.6);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+.audioLabel {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gfx-glow);
+  padding-right: 0.6rem;
+}
+
+.volume {
+  width: 90px;
+  accent-color: var(--gfx-gold);
+  margin-right: 0.6rem;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: inset 0 0 0 1px rgba(217, 174, 112, 0.6), 0 0 0 0 rgba(217, 174, 112, 0.4); }
+  50% { box-shadow: inset 0 0 0 1px rgba(217, 174, 112, 0.6), 0 0 0 8px rgba(217, 174, 112, 0); }
+}
+
+.loader {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(ellipse at 50% 30%, var(--gfx-burgundy-hi), var(--gfx-burgundy) 55%, var(--gfx-navy));
+  z-index: 80;
+  text-align: center;
+}
+
+.loaderStar {
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 1.2rem;
+  animation: spin 3s linear infinite;
+  filter: drop-shadow(0 0 14px var(--gfx-gold));
+}
+
+.loaderText {
+  font-family: var(--gfx-font-serif);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--gfx-glow);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.snowLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.flake {
+  position: absolute;
+  top: -10px;
+  border-radius: 50%;
+  background: var(--gfx-snow);
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fall {
+  to { transform: translate3d(var(--drift, 20px), 110vh, 0); }
+}
+
+@media (max-width: 767px) {
+  .volume,
+  .audioLabel {
+    display: none;
+  }
+}

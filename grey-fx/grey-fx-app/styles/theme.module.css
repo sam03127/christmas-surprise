@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Dancing+Script:wght@400;600&display=swap');
+
+:global(:root) {
+  --gfx-burgundy: #260812;
+  --gfx-navy: #080f20;
+  --gfx-emerald: #16432f;
+  --gfx-gold: #d9ae70;
+  --gfx-cream: #fff1df;
+  --gfx-grey: #c9b8b0;
+  --gfx-burgundy-hi: #5a1728;
+  --gfx-glow: #f4d7a1;
+  --gfx-snow: #e9edf5;
+
+  --gfx-font-ui: 'Poppins', system-ui, sans-serif;
+  --gfx-font-serif: 'Cormorant Garamond', Georgia, serif;
+  --gfx-font-hand: 'Dancing Script', cursive;
+
+  --gfx-radius: 18px;
+  --gfx-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --gfx-gold-line: linear-gradient(90deg, transparent, var(--gfx-gold), transparent);
+}
+
+:global(*) {
+  box-sizing: border-box;
+}
+
+:global(html),
+:global(body) {
+  margin: 0;
+  padding: 0;
+  background: var(--gfx-burgundy);
+  color: var(--gfx-cream);
+  font-family: var(--gfx-font-ui);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:global(button) {
+  font-family: inherit;
+}
+
+:global(::selection) {
+  background: var(--gfx-gold);
+  color: var(--gfx-burgundy);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(*),
+  :global(*::before),
+  :global(*::after) {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

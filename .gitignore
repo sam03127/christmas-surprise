@@ -1,0 +1,16 @@
+node_modules/
+.bit_roots/
+.bit/
+.history
+.cache/
+.tmp/
+.vite/
+coverage/
+dist/
+*.log
+*.tar.gz
+.env
+.env.*
+!.env.example
+.mcp.json
+.vscode/
