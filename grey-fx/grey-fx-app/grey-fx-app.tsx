@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import './styles/theme.module.css';
+import './styles/theme.css';
 import { HomePage } from './pages/home-page.js';
 import { SurprisePage } from './pages/surprise-page.js';
 import { CreatorPage } from './dashboard/creator-page.js';

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Dancing+Script:wght@400;600&display=swap');
 
-:global(:root) {
+:root {
   color-scheme: dark;
 
   --gfx-burgundy: #260812;
@@ -22,12 +22,12 @@
   --gfx-gold-line: linear-gradient(90deg, transparent, var(--gfx-gold), transparent);
 }
 
-:global(*) {
+* {
   box-sizing: border-box;
 }
 
-:global(html),
-:global(body) {
+html,
+body {
   margin: 0;
   padding: 0;
   background: var(--gfx-burgundy);
@@ -37,32 +37,32 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-:global(button) {
+button {
   font-family: inherit;
 }
 
-:global(input),
-:global(textarea),
-:global(select) {
+input,
+textarea,
+select {
   color: var(--gfx-cream);
   font: inherit;
 }
 
-:global(input::placeholder),
-:global(textarea::placeholder) {
+input::placeholder,
+textarea::placeholder {
   color: rgba(255, 241, 223, 0.68);
   opacity: 1;
 }
 
-:global(::selection) {
+::selection {
   background: var(--gfx-gold);
   color: var(--gfx-burgundy);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :global(*),
-  :global(*::before),
-  :global(*::after) {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
