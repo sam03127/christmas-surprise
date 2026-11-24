@@ -1,4 +1,4 @@
-import express, { type Request, type Response } from 'express';
+import express, { type NextFunction, type Request, type Response } from 'express';
 import mongoose from 'mongoose';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -12,6 +12,15 @@ app.use(express.json({ limit: '12mb' }));
 
 const service = SurpriseService.from();
 const token = (req: Request) => req.header('x-edit-token') || undefined;
+const requireDatabase = (_req: Request, res: Response, next: NextFunction) => {
+  if (mongoose.connection.readyState !== 1) {
+    res.status(503).json({
+      message: 'Surprise storage is unavailable because the database is not connected. Configure MONGO_URL in Render.',
+    });
+    return;
+  }
+  next();
+};
 const wrap =
   (handler: (req: Request, res: Response) => Promise<unknown>) =>
   async (req: Request, res: Response) => {
@@ -28,6 +37,7 @@ const wrap =
   };
 
 app.get('/health', (_req, res) => res.json({ ok: true }));
+app.use('/surprise-service', requireDatabase);
 app.post('/surprise-service/surprises', wrap((req) => service.create(req.body?.experience)));
 app.get('/surprise-service/surprises/:id', wrap((req) => service.get(String(req.params.id), token(req))));
 app.put('/surprise-service/surprises/:id', wrap((req) =>
